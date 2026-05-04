@@ -12,10 +12,10 @@ de un producto y lo guarde en un array
 5. Simulación de la sesión de usuario
 6. El sistema debe de tener varias categorias
 
-🆔 IDES:
+🆔 IDES Y HERRAMIENTAS:
 
 Visual code studio
-
+FIGMA
 
 💻 TECNOLOGIAS:
  HTML 
