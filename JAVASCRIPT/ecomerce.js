@@ -50,3 +50,4 @@ const productos = [
     },
 ];
 
+let producto = [];
