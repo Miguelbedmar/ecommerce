@@ -67,7 +67,7 @@ productos.forEach(function(producto){
   tarjeta.innerHTML =  `
     <h3>${producto.nombre}</h3>
    <p>precio :${producto.precio.toFixed(2)}</p>
-   <button>agregar</button></p> `;
+   <button onclick="agregarAlCarrito(${producto.id})">agregar</button></p> `;
    
 caja.appendChild(tarjeta);
  
@@ -81,12 +81,18 @@ recorrerProductos(productos);
 *suma +1 a la cantidad de ese objeto.
 */
 function agregarAlCarrito(id) {
-  const productoCarrito = carrito.find();
+  const productoCarrito = carrito.find(function(item){
+  return item.id === id ;
+  });
 
   if(productoCarrito){
+    productoCarrito.cantidad++;
 
   }else{
-    const producto = producto.find();
-    carrito.push();
+    const producto = productos.find(function(item){
+      return item.id === id;
+    });
+    carrito.push({...producto,cantidad: 1});
   }
+
 }
