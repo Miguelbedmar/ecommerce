@@ -3,7 +3,7 @@ const productos = [
   {
     id: 1,
     nombre: "Metal Gear SOLID 2 FIGMA",
-    precio: 106.21
+    precio: 106.21,
     categoria: "figuras",
     imagen: "🗿",
     stock: 50,
@@ -50,4 +50,3 @@ const productos = [
     },
 ];
 
-let producto = [];
