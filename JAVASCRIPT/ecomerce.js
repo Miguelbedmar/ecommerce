@@ -50,3 +50,28 @@ const productos = [
     },
 ];
 
+/**CREO UNA FUNCIÓN PARA RECORRER LA LISTA DE LOS PRODUCTOS UTILIZANDO UN METODO QUE 
+ * RECORRA LA LISTA UTILIZANDO EL FOREACH PORQUÉ ? Y  OTRA IMPORTANTE SERÍA PORQUE NO
+ *  EL METODO MAP ? PUES ES BASTANTE SIMPLE Y ES QUE NO ME INTERESA QUE  SE GENERE
+ * UN NUEVO ARRAY POR ESO ME ES MÁS ÓPTIMO EL FOREACH QUE EL .MAP
+ */
+
+function recorrerProductos(productos){
+const caja = document.getElementById("lista-producto");
+caja.innerHTML="";
+
+productos.forEach(function(producto){
+  const tarjeta = document.createElement("div");
+  tarjeta.className= "tarjeta-producto";
+
+  tarjeta.innerHTML =  `
+    <h3>${producto.nombre}</h3>
+   <p>precio :${producto.precio.toFixed(2)}</p>
+   <button>agregar</button></p> `;
+   
+caja.appendChild(tarjeta);
+ 
+});
+
+}
+recorrerProductos(productos);
