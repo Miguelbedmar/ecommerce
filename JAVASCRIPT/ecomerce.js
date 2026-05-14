@@ -96,3 +96,11 @@ function agregarAlCarrito(id) {
   }
 
 }
+
+function CalcularTotal(){
+ const total = carrito.reduce(function(acumulador,item){
+  return acumulador + (item.cantidad * item.precio);
+ },0);
+console.log(total.toFixed (2));
+
+}
