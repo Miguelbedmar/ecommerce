@@ -61,6 +61,7 @@ let nombreUsuario=sessionStorage.getItem("nombreUsuario")||"";
 
 function recorrerProductos(productos){
 const caja = document.getElementById("lista-producto");
+if(!caja)return;
 caja.innerHTML="";
 
 productos.forEach(function(producto){
@@ -70,7 +71,7 @@ productos.forEach(function(producto){
   tarjeta.innerHTML =  `
     <h3>${producto.nombre}</h3>
    <p>precio :${producto.precio.toFixed(2)}</p>
-   <button onclick="agregarAlCarrito(${producto.id})">agregar</button></p> `;
+   <button onclick="agregarAlCarrito(${producto.id})">agregar</button> `;
    
 caja.appendChild(tarjeta);
  
@@ -104,8 +105,38 @@ function CalcularTotal(){
  const total = carrito.reduce(function(acumulador,item){
   return acumulador + (item.cantidad * item.precio);
  },0);
+ const totalconte = document.getElementById("total-carrito");
+ if(totalconte){
+  totalconte.textContent= total.toFixed(2);
+ }
 console.log(total.toFixed (2));
 
+}
+
+function actualizarCarrito(){
+const listaCarro = document.getElementById("lista-carrito");
+if(!listaCarro) return;
+listaCarro.innerHTML="";
+
+carrito.forEach(function(item){
+const elemento = document.getElementById("div");
+elemento.className = "item-carrito";
+elemento.innerHTML= `
+      <p>${item.nombre} x${item.cantidad} - ${(item.precio * item.cantidad).toFixed(2)}€</p>
+    `;
+});
+listaCarro.appendChild(elemento);
+}
+
+function mostrarCarrito(){
+  const contenedor = document.getElementById("carrito-contenedor");
+  if(!contenedor)return;
+
+  if(contenedor.style.display ==="none"){
+    contenedor.style.display = "block";
+  }else{
+    contenedor.style.display= "none";
+  }
 }
 
 function filtrarPorCategoria(categoria){
@@ -131,7 +162,7 @@ if(sesionActiva){
 
   sesionActiva =false;
   nombreUsuario=""
-  sessionStorage.removeItem("SesionActiva");
+  sessionStorage.removeItem("sesionActiva");
   sessionStorage.removeItem("nombreUsuario")
 }else{
   const input = prompt ("¿Como te llamas?");
@@ -164,7 +195,17 @@ if(sesionActiva){
 }
 }
 function barraBusquedad(){
+const buscador = document.getElementById("buscador");
+if(!buscador)return;
 
+const productoBuscado = buscador.value.toLocaleLowerCase.trim();
+const filtrado = productos.filter(function(producto){
+const nombreProducto = producto.nombre.toLowerCase(); 
+return nombreProducto.includes(productoBuscado);
+});
 
-
+recorrerProductos(filtrado);
 }
+
+recorrerProductos(productos);
+actualizarSesionUI();

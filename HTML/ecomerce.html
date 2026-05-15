@@ -23,7 +23,7 @@
     </nav>
 
     <div class="search-bar">
-      <input type="text" id="buscador" placeholder="Buscar producto...">
+      <input type="text" id="buscador" oninput="barraBusquedad()" placeholder="Buscar producto...">
     </div>
 
     <div>
@@ -47,6 +47,12 @@
   <!-- ── PRODUCTOS ── -->
   <main>
     <section id="lista-producto"></section>
+
+    <section id="carrito-contenedor" style="display: none; padding: 20px; background: #f9f9f9; border-top: 2px solid #ccc;">
+      <h2>Tu Carrito</h2>
+      <div id="lista-carrito"></div>
+      <p><strong>Total: <span id="total-carrito">0.00</span>€</strong></p>
+    </section>
   </main>
 
   <!-- ── FOOTER ── -->
