@@ -50,6 +50,9 @@ const productos = [
     },
 ];
 let carrito= [];
+let sesionActiva = false;
+let nombreUsuario="";
+
 /**CREO UNA FUNCIÓN PARA RECORRER LA LISTA DE LOS PRODUCTOS UTILIZANDO UN METODO QUE 
  * RECORRA LA LISTA UTILIZANDO EL FOREACH PORQUÉ ? Y  OTRA IMPORTANTE SERÍA PORQUE NO
  *  EL METODO MAP ? PUES ES BASTANTE SIMPLE Y ES QUE NO ME INTERESA QUE  SE GENERE
@@ -103,4 +106,36 @@ function CalcularTotal(){
  },0);
 console.log(total.toFixed (2));
 
+}
+
+function filtrarPorCategoria(categoria){
+const productoCategoria = productos.filter(function(producto){
+return producto.categoria === categoria;
+});
+
+recorrerProductos(productoCategoria);
+
+}
+
+function ordenarPorPrecio(){
+const productOrdenado = [...productos].sort(function(a,b){
+return a.precio - b.precio; 
+
+});
+recorrerProductos(productOrdenado);
+
+}
+
+function toggleSesion(){
+if(sesionActiva){
+
+  sesionActiva =false;
+  nombreUsuario=""
+}else{
+
+  nombreUsuario= prompt("¿Como te llamas?")
+  sesionActiva = true;
+}
+
+actualizarSesionUI();
 }
