@@ -126,7 +126,7 @@ recorrerProductos(productOrdenado);
 
 }
 
-function toggleSesion(){
+function mantenerSesion(){
 if(sesionActiva){
 
   sesionActiva =false;
