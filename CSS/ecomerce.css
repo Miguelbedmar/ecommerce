@@ -14,7 +14,6 @@
   --acento:     #d4a017;
 }
 
-/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -184,7 +183,7 @@ body::before {
 
 .realizar-compra:hover { background: var(--rojo-suave); border-color: var(--rojo-suave); }
 
-/* ── SESIÓN ── */
+
 #estado {
   font-size: 0.68rem;
   color: var(--acento);
@@ -192,7 +191,6 @@ body::before {
   margin-left: 0.5rem;
 }
 
-/* ── HERO BANNER ── */
 .hero {
   position: relative;
   z-index: 1;
@@ -271,14 +269,14 @@ main::before {
   border-bottom: 1px solid var(--borde);
 }
 
-/* ── GRID DE PRODUCTOS ── */
+
 #lista-producto {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5px;
 }
 
-/* ── TARJETA PRODUCTO ── */
+
 .tarjeta-producto {
   background: var(--tarjeta-bg);
   border: 1px solid var(--borde);
@@ -309,7 +307,6 @@ main::before {
 
 .tarjeta-producto:hover::before { height: 100%; }
 
-/* ── IMAGEN / EMOJI ── */
 .tarjeta-producto > div:first-child,
 .producto-imagen {
   font-size: 3rem;
@@ -320,7 +317,6 @@ main::before {
   margin-bottom: 0.25rem;
 }
 
-/* ── NOMBRE PRODUCTO ── */
 .tarjeta-producto h3 {
   font-family: 'Shippori Mincho', serif;
   font-size: 0.95rem;
@@ -330,7 +326,6 @@ main::before {
   color: var(--blanco);
 }
 
-/* ── PRECIO ── */
 .tarjeta-producto p {
   font-size: 1.1rem;
   font-weight: 700;
@@ -338,7 +333,6 @@ main::before {
   letter-spacing: 0.05em;
 }
 
-/* ── BOTÓN AGREGAR ── */
 .tarjeta-producto button {
   margin-top: auto;
   background: transparent;
@@ -443,4 +437,19 @@ footer {
   font-size: 1.8rem;
   color: rgba(255,255,255,0.06);
   letter-spacing: 0.2em;
+}
+
+
+/* MEDIAS QUERYS*/
+@media (min-width: 768px) {  /* TABLETS O PANTALLAS MAS GRANDES*/
+    .container {
+        flex-direction: row; 
+    }
+}
+
+/* DESKTOP*/
+@media (min-width: 1024px) {
+    body {
+        padding: 20px;
+    }
 }
