@@ -50,8 +50,8 @@ const productos = [
     },
 ];
 let carrito= [];
-let sesionActiva = false;
-let nombreUsuario="";
+let sesionActiva= sessionStorage.getItem("sesionActiva") === "true";
+let nombreUsuario=sessionStorage.getItem("nombreUsuario")||"";
 
 /**CREO UNA FUNCIÓN PARA RECORRER LA LISTA DE LOS PRODUCTOS UTILIZANDO UN METODO QUE 
  * RECORRA LA LISTA UTILIZANDO EL FOREACH PORQUÉ ? Y  OTRA IMPORTANTE SERÍA PORQUE NO
@@ -131,10 +131,21 @@ if(sesionActiva){
 
   sesionActiva =false;
   nombreUsuario=""
+  sessionStorage.removeItem("SesionActiva");
+  sessionStorage.removeItem("nombreUsuario")
 }else{
-
-  nombreUsuario= prompt("¿Como te llamas?")
+  const input = prompt ("¿Como te llamas?");
+  if(input&& input.trim()!==""){
+  nombreUsuario= input.trim();
   sesionActiva = true;
+
+  sessionStorage.setItem("sesionActiva","true");
+  sessionStorage.setItem("nombreUsuario",nombreUsuario);
+
+  }else{
+    return;
+  }
+ 
 }
 
 actualizarSesionUI();
@@ -143,7 +154,7 @@ actualizarSesionUI();
 function actualizarSesionUI(){
 const boton =document.getElementById("login");
 const estado=document.getElementById("estado");
-
+  if(!boton|| !estado) return;
 if(sesionActiva){
   boton.textContent ="Cerrar Sesion";
   estado.textContent = "Bienvenido,"+nombreUsuario;
@@ -151,4 +162,9 @@ if(sesionActiva){
   boton.textContent =" Iniciar Sesion";
   estado.textContent ="";
 }
+}
+function barraBusquedad(){
+
+
+
 }
