@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Shippori+Mincho:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── VARIABLES ── */
+:root {
+  --negro:      #0a0a0a;
+  --blanco:     #f5f0e8;
+  --rojo:       #c0392b;
+  --rojo-suave: #e74c3c;
+  --gris:       #2a2a2a;
+  --gris-medio: #444;
+  --gris-claro: #888;
+  --borde:      #2a2a2a;
+  --tarjeta-bg: #111111;
+  --acento:     #d4a017;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--negro);
+  color: var(--blanco);
+  font-family: 'Space Mono', monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ── FONDO TEXTURA ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HEADER ── */
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--borde);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 2rem;
+  height: 70px;
+}
+
+/* ── LOGO ── */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-area h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--blanco);
+  white-space: nowrap;
+}
+
+.logo-area h1::before {
+  content: '有難う';
+  display: block;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--rojo);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+/* ── NAV CATEGORÍAS ── */
+.categorias {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.categorias a {
+  color: var(--gris-claro);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.categorias a:hover {
+  color: var(--blanco);
+  border-color: var(--borde);
+}
+
+.categorias a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--rojo);
+  transition: width 0.25s ease;
+}
+
+.categorias a:hover::after { width: 80%; }
+
+.categorias button {
+  background: var(--rojo);
+  color: var(--blanco);
+  border: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.categorias button:hover { background: var(--rojo-suave); }
+
+/* ── SEARCH BAR ── */
+.search-bar input {
+  background: var(--gris);
+  border: 1px solid var(--borde);
+  color: var(--blanco);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.5rem 1rem;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.2s, width 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.search-bar input::placeholder { color: var(--gris-claro); }
+.search-bar input:focus {
+  border-color: var(--rojo);
+  width: 240px;
+}
+
+/* ── BOTONES HEADER ── */
+.login, .realizar-compra {
+  background: transparent;
+  border: 1px solid var(--borde);
+  color: var(--blanco);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.login:hover {
+  background: var(--gris);
+  border-color: var(--gris-claro);
+}
+
+.realizar-compra {
+  background: var(--rojo);
+  border-color: var(--rojo);
+}
+
+.realizar-compra:hover { background: var(--rojo-suave); border-color: var(--rojo-suave); }
+
+/* ── SESIÓN ── */
+#estado {
+  font-size: 0.68rem;
+  color: var(--acento);
+  letter-spacing: 0.08em;
+  margin-left: 0.5rem;
+}
+
+/* ── HERO BANNER ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  border-bottom: 1px solid var(--borde);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: 'ARIGATO';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(6rem, 18vw, 18rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+
+.hero-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--rojo);
+  margin-bottom: 1rem;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+
+.hero p {
+  font-size: 0.75rem;
+  color: var(--gris-claro);
+  letter-spacing: 0.1em;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MAIN ── */
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── TÍTULO SECCIÓN ── */
+main::before {
+  content: '// PRODUCTOS';
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--gris-claro);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+/* ── GRID DE PRODUCTOS ── */
+#lista-producto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5px;
+}
+
+/* ── TARJETA PRODUCTO ── */
+.tarjeta-producto {
+  background: var(--tarjeta-bg);
+  border: 1px solid var(--borde);
+  padding: 2rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+
+.tarjeta-producto::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--rojo);
+  transition: height 0.3s ease;
+}
+
+.tarjeta-producto:hover { 
+  transform: translateY(-3px);
+  border-color: var(--gris-medio);
+}
+
+.tarjeta-producto:hover::before { height: 100%; }
+
+/* ── IMAGEN / EMOJI ── */
+.tarjeta-producto > div:first-child,
+.producto-imagen {
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--borde);
+  margin-bottom: 0.25rem;
+}
+
+/* ── NOMBRE PRODUCTO ── */
+.tarjeta-producto h3 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--blanco);
+}
+
+/* ── PRECIO ── */
+.tarjeta-producto p {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--acento);
+  letter-spacing: 0.05em;
+}
+
+/* ── BOTÓN AGREGAR ── */
+.tarjeta-producto button {
+  margin-top: auto;
+  background: transparent;
+  border: 1px solid var(--borde);
+  color: var(--gris-claro);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.tarjeta-producto button:hover {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: var(--blanco);
+}
+
+.tarjeta-producto button:active {
+  transform: scale(0.98);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--borde);
+  background: #050505;
+  padding: 3rem 2rem 1.5rem;
+}
+
+.footer-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--borde);
+  margin-bottom: 1.5rem;
+}
+
+.footer-marca h3 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+}
+
+.footer-marca p {
+  font-size: 0.7rem;
+  color: var(--gris-claro);
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rojo);
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-col ul li {
+  font-size: 0.72rem;
+  color: var(--gris-claro);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer-col ul li:hover { color: var(--blanco); }
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 0.65rem;
+  color: var(--gris-claro);
+  letter-spacing: 0.1em;
+}
+
+.footer-kanji {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.8rem;
+  color: rgba(255,255,255,0.06);
+  letter-spacing: 0.2em;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arigato — Tienda Japonesa</title>
+  <link rel="stylesheet" href="/CSS/ecomerce.css">
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="header-container">
+
+    <div class="logo-area">
+      <h1>ARIGATO</h1>
+    </div>
+
+    <nav class="categorias">
+      <a href="#" onclick="filtrarPorCategoria('figuras')">Figuras</a>
+      <a href="#" onclick="filtrarPorCategoria('manga')">Manga</a>
+      <a href="#" onclick="filtrarPorCategoria('animeDvd')">Anime DVD</a>
+      <button onclick="ordenarPorPrecio()">↑ Precio</button>
+    </nav>
+
+    <div class="search-bar">
+      <input type="text" id="buscador" placeholder="Buscar producto...">
+    </div>
+
+    <div>
+      <button class="login" id="login" onclick="mantenerSesion()">Iniciar Sesión</button>
+      <span id="estado"></span>
+    </div>
+
+    <div>
+      <button class="realizar-compra" onclick="mostrarCarrito()">🛒 Carrito</button>
+    </div>
+
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <p class="hero-tag">Tokyo · Osaka · Kyoto</p>
+    <h2>Cultura japonesa<br>en tu puerta</h2>
+    <p>Figuras · Manga · Anime DVD</p>
+  </section>
+
+  <!-- ── PRODUCTOS ── -->
+  <main>
+    <section id="lista-producto"></section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-marca">
+        <h3>ARIGATO</h3>
+        <p>Tu tienda de referencia en cultura japonesa. Figuras de colección, manga y anime seleccionados con cuidado desde Japón.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li>Figuras</li>
+          <li>Manga</li>
+          <li>Anime DVD</li>
+          <li>Novedades</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Información</h4>
+        <ul>
+          <li>Sobre nosotros</li>
+          <li>Envíos</li>
+          <li>Devoluciones</li>
+          <li>Contacto</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Arigato Store — Todos los derechos reservados</p>
+      <span class="footer-kanji">有難う</span>
+    </div>
+  </footer>
+
+  <script src="/JAVASCRIPT/ecomerce.js"></script>
+</body>
+</html>
