@@ -438,6 +438,88 @@ footer {
   color: rgba(255,255,255,0.06);
   letter-spacing: 0.2em;
 }
+#carrito-contenedor {
+  position: fixed;
+  top: 70px; /* Alineado justo debajo de tu Header sticky */
+  right: 0;
+  width: 320px;
+  height: calc(100vh - 70px);
+  background: rgba(17, 17, 17, 0.98); /* Mismo color que tus tarjetas */
+  backdrop-filter: blur(15px);
+  border-left: 1px solid var(--borde);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 90;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#carrito-contenedor h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--blanco);
+  border-bottom: 1px solid var(--borde);
+  padding-bottom: 0.5rem;
+}
+
+/* Lista interna de elementos agregados */
+#lista-carrito {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 0.25rem;
+}
+
+/* Scrollbar personalizado para seguir la estética minimalista */
+#lista-carrito::-webkit-scrollbar {
+  width: 3px;
+}
+#lista-carrito::-webkit-scrollbar-thumb {
+  background: var(--borde);
+}
+#lista-carrito::-webkit-scrollbar-thumb:hover {
+  background: var(--rojo);
+}
+
+ /* CARRO */
+.item-carrito {
+  background: var(--negro);
+  border: 1px solid var(--borde);
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  animation: fadeUp 0.3s ease both;
+}
+
+.item-carrito p {
+  color: var(--blanco);
+  font-weight: 400;
+}
+
+
+#carrito-contenedor p:last-of-type {
+  border-top: 1px solid var(--borde);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+#total-carrito {
+  color: var(--acento);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
 
 
 /* MEDIAS QUERYS*/
