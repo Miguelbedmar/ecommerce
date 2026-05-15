@@ -139,3 +139,16 @@ if(sesionActiva){
 
 actualizarSesionUI();
 }
+
+function actualizarSesionUI(){
+const boton =document.getElementById("login");
+const estado=document.getElementById("estado");
+
+if(sesionActiva){
+  boton.textContent ="Cerrar Sesion";
+  estado.textContent = "Bienvenido,"+nombreUsuario;
+}else{
+  boton.textContent =" Iniciar Sesion";
+  estado.textContent ="";
+}
+}
